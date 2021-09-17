@@ -1,0 +1,11 @@
+@import "../../assets/scss/themeColors";
+
+.navbar{
+    grid-area: navbar;
+    background-color: $gray-100;
+
+    @media (max-width: 768px) {
+        display: flex;
+        align-items: center;
+    }
+}

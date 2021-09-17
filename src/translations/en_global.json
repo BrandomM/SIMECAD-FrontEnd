@@ -1,0 +1,15 @@
+{
+	"header": {
+		"logo": "Logo",
+		"login": "Log in"
+	},
+	"navbar": {
+		"home": "Home",
+		"products": "Products",
+		"about us": "About us",
+		"contact": "Contact"
+	},
+	"contact": {
+		"title": "Contacto"
+	}
+}

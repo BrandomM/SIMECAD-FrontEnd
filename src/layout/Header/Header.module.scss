@@ -1,0 +1,22 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/variables";
+
+.header {
+    grid-area: header;
+    height: $headerHeight;
+    background-color: $azulOscuro;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .logo{
+        height: $headerHeight*0.8;
+        margin-left: 10px;
+    }
+
+    .login {
+        color: $azulOscuro;
+        margin-right: 10px;
+    }
+}

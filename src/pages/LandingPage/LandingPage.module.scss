@@ -1,0 +1,24 @@
+@import "../../assets/scss/variables";
+
+.landingPage {
+  min-height: 100vh;
+  display: grid;
+  grid-template:
+    "header header" $headerHeight
+    "navbar main" auto /
+    1fr 4fr;
+
+  @media (max-width: 1600px) {
+    grid-template:
+      "header header" $headerHeight
+      "navbar main" auto /
+      2fr 6fr;
+  }
+  @media (max-width: 768px) {
+    grid-template:
+      "header" $headerHeight
+      "navbar" $navbarHeight
+      "main" auto;
+  }
+
+}

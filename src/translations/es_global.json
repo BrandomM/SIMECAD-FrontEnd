@@ -1,0 +1,15 @@
+{
+	"header": {
+		"logo": "Logotipo",
+		"login": "Iniciar sesión"
+	},
+	"navbar": {
+		"home": "Inicio",
+		"products": "Productos",
+		"about us": "Sobre nosotros",
+		"contact": "Contacto"
+	},
+	"contact": {
+		"title": "Contacto"
+	}
+}
