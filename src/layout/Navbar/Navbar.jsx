@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.scss";
 
-import { NavbarContainer } from "../../components/NavbarContainer.jsx/NavbarContainer";
+import { NavbarContainer } from "./NavbarContainer/NavbarContainer";
 
 export function Navbar() {
   return (
