@@ -10,6 +10,27 @@
 		"contact": "Contact"
 	},
 	"contact": {
-		"title": "Contacto"
+		"title": "Contact",
+		"information": {
+			"title": "Contact information",
+			"p1": "Contact us directly for additional information.",
+			"phone": {
+				"label": "Phone",
+				"value": "(601) 333 2648"
+			},
+			"mobile": {
+				"label": "Mobile",
+				"value": "315 2664978"
+			},
+			"email": {
+				"label": "Email",
+				"value": "funciontec@gmail.com"
+			},
+			"address": {
+				"label": "Address",
+				"value": "Calle 6 #35-16"
+			},
+			"p2": "If you want to know any of our products or the technical services we provide, you can contact us through these means or complete the contact form."
+		}
 	}
 }

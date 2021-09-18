@@ -1,19 +1,25 @@
-.contact{
+.contact {
+  display: grid;
+  grid-template:
+    "mainTitle mainTitle" auto
+    "contactInformation contactForm" auto /
+    2fr 3fr;
 
-    .title{
-        text-align: center;
-        margin-top: 40px;
-    }
+  .contactForm {
+    grid-area: contactForm;
+    background-color: beige;
+  }
 
-    @media (max-width: 1200px) {
-    }
-    @media (max-width: 1024px) {
-    }
-    @media (max-width: 768px) {
-        .title {
-            margin-top: 20px;
-        }
-    }
-    @media (max-width: 480px) {
-    }
+  @media (max-width: 1200px) {
+  }
+  @media (max-width: 1024px) {
+  }
+  @media (max-width: 768px) {
+    grid-template:
+      "mainTitle" auto
+      "contactInformation" auto
+      "contactForm" auto;
+  }
+  @media (max-width: 480px) {
+  }
 }
