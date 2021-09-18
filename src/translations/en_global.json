@@ -9,6 +9,16 @@
 		"about us": "About us",
 		"contact": "Contact"
 	},
+	"form": {
+		"errors": {
+			"required": "Required field",
+			"minLength": "The minimum accepted character value is",
+			"maxLength": "The maximum accepted character value is",
+			"min": "The minimum accepted value is",
+			"max": "The maximum accepted value is",
+			"pattern": "Invalid email address (e.g. example@email.com)"
+		}
+	},
 	"contact": {
 		"title": "Contact",
 		"information": {

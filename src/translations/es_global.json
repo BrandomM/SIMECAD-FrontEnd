@@ -9,6 +9,16 @@
 		"about us": "Sobre nosotros",
 		"contact": "Contacto"
 	},
+	"form": {
+		"errors": {
+			"required": "Campo requerido",
+			"minLength": "El valor mínimo de caracteres aceptado es",
+			"maxLength": "El valor máximo de caracteres aceptado es",
+			"min": "El valor mínimo aceptado es",
+			"max": "El valor máximo aceptado es",
+			"pattern": "Dirección de correo inválida (p. ej. nombre@ejemplo.com)"
+		}
+	},
 	"contact": {
 		"title": "Contacto",
 		"information": {
