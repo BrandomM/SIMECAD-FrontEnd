@@ -11,22 +11,22 @@ export function ContactInformation() {
       <h2>{T("title")}</h2>
       <p>{T("p1")}</p>
       <p>
-        <i class="bi bi-telephone" />
+        <i className="bi bi-telephone" />
         <strong>{T("phone.label")}: </strong>
         <span>{T("phone.value")}</span>
       </p>
       <p>
-        <i class="bi bi-phone" />
+        <i className="bi bi-phone" />
         <strong>{T("mobile.label")}: </strong>
         <span>{T("mobile.value")}</span>
       </p>
       <p>
-        <i class="bi bi-envelope" />
+        <i className="bi bi-envelope" />
         <strong>{T("email.label")}: </strong>
         <span>{T("email.value")}</span>
       </p>
       <p>
-        <i class="bi bi-map" />
+        <i className="bi bi-map" />
         <strong>{T("address.label")}: </strong>
         <span>{T("address.value")}</span>
       </p>

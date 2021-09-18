@@ -31,6 +31,12 @@
 				"value": "Calle 6 #35-16"
 			},
 			"p2": "Si deseas informarte sobre alguno de nuestros productos o los servicios técnicos que prestamos puedes contactarnos a través de estos medios o llenar el formulario de contacto."
+		},
+		"form": {
+			"name": "Nombre",
+			"email": "Correo",
+			"message": "Mensaje",
+			"send": "Enviar"
 		}
 	}
 }

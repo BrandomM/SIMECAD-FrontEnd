@@ -31,6 +31,12 @@
 				"value": "Calle 6 #35-16"
 			},
 			"p2": "If you want to know any of our products or the technical services we provide, you can contact us through these means or complete the contact form."
+		},
+		"form": {
+			"name": "Name",
+			"email": "Email",
+			"message": "Message",
+			"send": "Send"
 		}
 	}
 }
