@@ -9,11 +9,13 @@ import "./assets/scss/App.scss";
 
 import { BrowserRouter as Router} from "react-router-dom";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
+import { ToastContainer } from "./components/Toast/ToastContainer/ToastContainer";
 
 function App() {
   return (
     <Router>
       <LandingPage />
+      <ToastContainer />
     </Router>
   );
 }

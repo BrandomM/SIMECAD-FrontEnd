@@ -5,12 +5,17 @@ import { useForm, FormProvider } from "react-hook-form";
 import { Input } from "../../Form/Input/Input";
 import { Textarea } from "../../Form/Textarea/Textarea";
 
+import { EmailService } from "../../../services/EmailService";
+
 export function ContactForm() {
   const { t } = useTranslation();
   const T = (key) => t("contact.form." + key);
 
   const methods = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    EmailService.contacto(data);
+    methods.reset();
+  };
 
   return (
     <FormProvider {...methods}>

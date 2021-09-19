@@ -1,0 +1,54 @@
+@import "../../../assets/scss/themeColors";
+@import "../../../assets/scss/colors";
+
+.toastItem {
+    border: 1px solid $gray-400;
+    background-color: $gray-100;
+    border-radius: 0.25rem;
+    align-items: center;
+    text-align: center;
+    padding: 10px 10px;
+    margin-top: 5px;
+    display: grid;
+    grid-template: "icon message button" /
+    1fr 3fr 25px;
+
+    .icon {
+        grid-area: icon;
+        font-size: 2rem;
+        color: $gray-100;
+        border-radius: 0.25rem;
+        height: 3rem;
+        width: 3rem;
+        margin-right: 10px;
+
+        &.success {
+            background-color: $verde;
+        }
+
+        &.info {
+            background-color: $azulClaro;
+        }
+
+        &.warning {
+            background-color: $naranja;
+        }
+
+        &.danger {
+            background-color: $rojo;
+        }
+    }
+
+
+    .message{
+        grid-area: message;
+        margin-right: 10px;
+        margin-bottom: 0;
+        color: $gray-900;
+    }
+
+    .button{
+        grid-area: button;
+    }
+
+}
