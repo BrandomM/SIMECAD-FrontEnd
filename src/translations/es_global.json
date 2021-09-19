@@ -19,6 +19,12 @@
 			"pattern": "Dirección de correo inválida (p. ej. nombre@ejemplo.com)"
 		}
 	},
+	"confirmDialog": {
+		"confirm": "Confirmación",
+		"delete": "Eliminación",
+		"yes": "Sí",
+		"no": "No"
+	},
 	"contact": {
 		"title": "Contacto",
 		"information": {

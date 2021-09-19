@@ -19,6 +19,12 @@
 			"pattern": "Invalid email address (e.g. example@email.com)"
 		}
 	},
+	"confirmDialog": {
+		"confirm": "Confirmation",
+		"delete": "Delete",
+		"yes": "Yes",
+		"no": "No"
+	},
 	"contact": {
 		"title": "Contact",
 		"information": {
