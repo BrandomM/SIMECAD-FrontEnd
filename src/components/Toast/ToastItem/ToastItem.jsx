@@ -1,11 +1,19 @@
 import styles from "./ToastItem.module.scss";
 
-export function ToastItem({ message, severity }) {
+import { useToastDispatchContext } from "../../../context/ToastContext";
+
+export function ToastItem({ message, severity, id }) {
+  const dispatch = useToastDispatchContext();
+
   const iconClasses = {
     success: "bi bi-check-circle",
     info: "bi bi-info-circle",
     warning: "bi bi-exclamation-circle",
     danger: "bi bi-x-circle",
+  };
+
+  const close = () => {
+    dispatch({ type: "DELETE_TOAST", id });
   };
 
   return (
@@ -15,7 +23,11 @@ export function ToastItem({ message, severity }) {
       </div>
       <p className={styles.message}>{message}</p>
       <div className={styles.button}>
-        <button type="button" className={`btn-close ${styles.button}`} />
+        <button
+          onClick={() => close()}
+          type="button"
+          className={`btn-close ${styles.button}`}
+        />
       </div>
     </div>
   );

@@ -7,15 +7,18 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import "./assets/scss/App.scss";
 
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
+import { ToastProvider } from "./context/ToastContext";
 import { ToastContainer } from "./components/Toast/ToastContainer/ToastContainer";
 
 function App() {
   return (
     <Router>
-      <LandingPage />
-      <ToastContainer />
+      <ToastProvider>
+        <LandingPage />
+        <ToastContainer />
+      </ToastProvider>
     </Router>
   );
 }
