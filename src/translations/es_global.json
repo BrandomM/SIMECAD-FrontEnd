@@ -52,7 +52,10 @@
 			"name": "Nombre",
 			"email": "Correo",
 			"message": "Mensaje",
-			"send": "Enviar"
+			"send": "Enviar",
+			"confirmDialog": "¿Desea enviar el mensaje?",
+			"messageSuccess": "Mensaje enviado exitosamente",
+			"messageFailure": "Ocurrió un problema en el envío del mensaje"
 		}
 	}
 }

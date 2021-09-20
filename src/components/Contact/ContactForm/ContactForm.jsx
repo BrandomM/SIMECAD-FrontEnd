@@ -1,20 +1,45 @@
 import styles from "./ContactForm.module.scss";
 
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm, FormProvider } from "react-hook-form";
-import { Input } from "../../Form/Input/Input";
-import { Textarea } from "../../Form/Textarea/Textarea";
+import { useToast } from "../../../hooks/useToast";
 
 import { EmailService } from "../../../services/EmailService";
+
+import { Input } from "../../Form/Input/Input";
+import { Textarea } from "../../Form/Textarea/Textarea";
+import { ConfirmDialog } from "../../ConfirmDialog/ConfirmDialog";
 
 export function ContactForm() {
   const { t } = useTranslation();
   const T = (key) => t("contact.form." + key);
 
   const methods = useForm();
+
+  const [showDialog, setShowDialog] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  const toast = useToast();
+
   const onSubmit = (data) => {
-    EmailService.contacto(data);
+    setFormData(data);
+    setShowDialog(true);
+  };
+
+  const confirm = async () => {
+    setShowDialog(false);
+    const wasSended = await EmailService.contacto(formData);
+    if (wasSended) {
+      toast("success", T("messageSuccess"));
+    } else {
+      toast("danger", T("messageFailure"));
+    }
     methods.reset();
+  };
+
+  const cancel = () => {
+    setShowDialog(false);
   };
 
   return (
@@ -33,6 +58,13 @@ export function ContactForm() {
           </div>
         </form>
       </div>
+      <ConfirmDialog
+        show={showDialog}
+        confirm={() => confirm()}
+        cancel={() => cancel()}
+        type="confirm"
+        message={T("confirmDialog")}
+      />
     </FormProvider>
   );
 }

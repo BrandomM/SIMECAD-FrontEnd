@@ -4,13 +4,14 @@ const API = "http://localhost:8080/api/email";
 
 export const EmailService = {
   contacto: async (contactInformation) => {
-    await axios
+    return await axios
       .post(API + "/contacto", contactInformation)
       .then((response) => {
-        // console.log(response.data);
+        return true;
       })
       .catch((error) => {
         console.log(error);
+        return false;
       });
   },
 };
