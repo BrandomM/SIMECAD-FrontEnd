@@ -14,6 +14,7 @@ export function Input({
   min,
   max,
   pattern,
+  isInvalid=false,
 }) {
   const { t } = useTranslation();
   const T = (key) => t("form.errors." + key);
@@ -36,7 +37,7 @@ export function Input({
       <input
         id={name}
         type={type}
-        className={`form-control ${errors[name] ? "is-invalid" : ""}`}
+        className={`form-control ${errors[name] || isInvalid ? "is-invalid" : ""}`}
         {...register(name, {
           required,
           minLength,

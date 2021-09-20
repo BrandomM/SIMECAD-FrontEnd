@@ -18,5 +18,16 @@
     .login {
         color: $azulOscuro;
         margin-right: 10px;
+        display: flex;
+        align-items: center;
+
+        .icon{
+            margin-left: 10px;
+            font-size: 1.2rem;
+
+            @media (max-width: 350px) {
+                display: none;
+            }
+        }
     }
 }
