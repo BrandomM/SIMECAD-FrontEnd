@@ -10,8 +10,11 @@
     "axios": "^0.21.4",
     "bootstrap": "^5.1.1",
     "bootstrap-icons": "^1.5.0",
+    "file-saver": "^2.0.5",
     "i18next": "^20.6.1",
     "i18next-browser-languagedetector": "^6.1.2",
+    "jspdf": "^2.4.0",
+    "jspdf-autotable": "^3.5.20",
     "primeicons": "^4.1.0",
     "primereact": "^6.5.1",
     "react": "^17.0.2",
@@ -23,7 +26,8 @@
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
     "sass": "^1.41.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "xlsx": "^0.17.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,6 +6,7 @@ import defaultUserPicture from "../../assets/img/defaultUserPicture.png";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../../context/UserContext";
+import { useHistory } from "react-router";
 
 import { LoginService } from "../../services/LoginService";
 
@@ -13,12 +14,12 @@ import { Link } from "react-router-dom";
 import { Login } from "./Login/Login";
 import { Register } from "./Register/Register";
 
-
-
 export function Header() {
   const { user, setUser } = useContext(UserContext);
 
   const { t } = useTranslation();
+
+  const history = useHistory();
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
@@ -42,6 +43,7 @@ export function Header() {
   const logout = () => {
     LoginService.logout();
     setUser(null);
+    history.push("/");
   };
 
   return (

@@ -17,7 +17,7 @@ export function About() {
       <div className={styles.cardsContainer}>
         <div className={`card ${styles.card} ${styles.mision}`}>
           <h3>{T("mission.title")}</h3>
-          <i class={`bi bi-bullseye ${styles.icon}`} />
+          <i className={`bi bi-bullseye ${styles.icon}`} />
           <p className={styles.informationText}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
             saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
@@ -28,7 +28,7 @@ export function About() {
 
         <div className={`card ${styles.card} ${styles.vision}`}>
           <h3>{T("vision.title")}</h3>
-          <i class={`bi bi-eye ${styles.icon}`} />
+          <i className={`bi bi-eye ${styles.icon}`} />
           <p className={styles.informationText}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
             saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam

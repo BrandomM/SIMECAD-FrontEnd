@@ -4,6 +4,7 @@ import { useState } from "react/cjs/react.development";
 import { useForm, FormProvider } from "react-hook-form";
 import { useToast } from "../../../hooks/useToast";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router";
 
 import { LoginService } from "../../../services/LoginService";
 
@@ -18,6 +19,7 @@ export function Login({ show, cancel, showRegister }) {
   const toast = useToast();
   const { t } = useTranslation();
   const T = (key) => t("login." + key);
+  const history = useHistory();
 
   if (!show) {
     return <></>;
@@ -31,6 +33,7 @@ export function Login({ show, cancel, showRegister }) {
       methods.reset();
       cancel();
       setUser(loginResponse.usuarioDTO);
+      history.push("/");
     } else {
       setIsInvalid(true);
       toast("danger", T("toasts.danger"));
