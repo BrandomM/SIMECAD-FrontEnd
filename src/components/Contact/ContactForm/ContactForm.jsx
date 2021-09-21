@@ -29,6 +29,7 @@ export function ContactForm() {
 
   const confirm = async () => {
     setShowDialog(false);
+    toast("info", T("sendingMessage"))
     const wasSended = await EmailService.contacto(formData);
     if (wasSended) {
       toast("success", T("messageSuccess"));

@@ -3,31 +3,37 @@ import styles from "./Login.module.scss";
 import { useState } from "react/cjs/react.development";
 import { useForm, FormProvider } from "react-hook-form";
 import { useToast } from "../../../hooks/useToast";
+import { useTranslation } from "react-i18next";
 
 import { LoginService } from "../../../services/LoginService";
 
 import { Input } from "../../../components/Form/Input/Input";
+import { useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 export function Login({ show, cancel, showRegister }) {
+  const { setUser } = useContext(UserContext);
   const methods = useForm();
   const [isInvalid, setIsInvalid] = useState(false);
-
   const toast = useToast();
+  const { t } = useTranslation();
+  const T = (key) => t("login." + key);
 
   if (!show) {
     return <></>;
   }
 
   const onSubmit = async (data) => {
-    const usuarioLogin = await LoginService.login(data);
-    if (usuarioLogin) {
+    const loginResponse = await LoginService.login(data);
+    if (loginResponse) {
       setIsInvalid(false);
-      toast("success", "Inicio de sesión exitoso");
+      toast("success", T("toasts.success"));
       methods.reset();
       cancel();
+      setUser(loginResponse.usuarioDTO);
     } else {
       setIsInvalid(true);
-      toast("danger", "Correo o contraseña inválidos");
+      toast("danger", T("toasts.danger"));
     }
   };
 
@@ -43,7 +49,7 @@ export function Login({ show, cancel, showRegister }) {
           <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Iniciar sesión</h5>
+                <h5 className="modal-title">{T("title")}</h5>
                 <button
                   type="button"
                   onClick={() => cancel()}
@@ -56,14 +62,14 @@ export function Login({ show, cancel, showRegister }) {
                 <div className={styles.form}>
                   <Input
                     type="email"
-                    label="Correo"
+                    label={T("inputs.email")}
                     name="correoLogin"
                     required
                     isInvalid={isInvalid}
                   />
                   <Input
                     type="password"
-                    label="Contraseña"
+                    label={T("inputs.password")}
                     name="contrasenaLogin"
                     required
                     isInvalid={isInvalid}
@@ -72,7 +78,7 @@ export function Login({ show, cancel, showRegister }) {
                     onClick={() => displayRegister()}
                     className={`link-azulOscuro ${styles.pointer}`}
                   >
-                    ¿No tienes una cuenta? Regístrate
+                    {T("registerSwitch")}
                   </p>
                 </div>
               </div>
@@ -83,13 +89,13 @@ export function Login({ show, cancel, showRegister }) {
                   className="btn btn-blanco"
                   data-bs-dismiss="modal"
                 >
-                  Cancelar
+                  {T("cancel")}
                 </button>
                 <input
                   type="submit"
                   //   onClick={() => confirm()}
                   className={"btn btn-azulClaro"}
-                  value="Ingresar"
+                  value={T("login")}
                 />
               </div>
             </div>

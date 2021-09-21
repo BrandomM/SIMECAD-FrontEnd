@@ -27,14 +27,11 @@ export const LoginService = {
   },
 
   login: async ({ correoLogin, contrasenaLogin }) => {
-    console.log(correoLogin + contrasenaLogin);
     const credenciales = { correo: correoLogin, contrasena: contrasenaLogin };
 
     return await axios
       .post(API + "/login", credenciales)
       .then((response) => {
-        // localStorage.setItem("token", response.data.token);
-        // localStorage.setItem("usuario", JSON.stringify(response.data.usuario));
         return response.data;
       })
       .catch((error) => {

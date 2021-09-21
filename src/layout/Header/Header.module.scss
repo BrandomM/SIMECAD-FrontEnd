@@ -1,33 +1,75 @@
 @import "../../assets/scss/colors";
+@import "../../assets/scss/themeColors";
 @import "../../assets/scss/variables";
 
 .header {
-    grid-area: header;
-    height: $headerHeight;
-    background-color: $azulOscuro;
+  grid-area: header;
+  height: $headerHeight;
+  background-color: $azulOscuro;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    height: $headerHeight * 0.8;
+    margin-left: 10px;
+  }
+
+  .login {
+    color: $azulOscuro;
+    margin-right: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
+    .icon {
+      margin-left: 10px;
+      font-size: 1.2rem;
 
-    .logo{
-        height: $headerHeight*0.8;
-        margin-left: 10px;
+      @media (max-width: 350px) {
+        display: none;
+      }
+    }
+  }
+
+  .userInformation {
+    color: white;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .username {
+      margin-bottom: 0;
+
+      @media (max-width: 768px) {
+          display: none;
+      }
     }
 
-    .login {
-        color: $azulOscuro;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-
-        .icon{
-            margin-left: 10px;
-            font-size: 1.2rem;
-
-            @media (max-width: 350px) {
-                display: none;
-            }
-        }
+    .userPicture {
+      height: $headerHeight * 0.5;
+      margin-left: 10px;
+      border-radius: 0.25rem;
+      background-color: white;
     }
+  }
+
+  .popover{
+      display: grid;
+      grid-gap: 10px;
+      padding: 10px 10px;
+      text-align: center;
+
+      .pButton {
+          cursor: pointer;
+          margin-bottom: 0;
+          background-color: $gray-400;
+          padding: 10px 0;
+          border-radius: 0.25rem;
+
+          &:hover {
+              background-color: $gray-500;
+          }
+      }
+  }
 }

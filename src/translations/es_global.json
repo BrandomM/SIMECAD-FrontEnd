@@ -25,6 +25,36 @@
 		"yes": "Sí",
 		"no": "No"
 	},
+	"login": {
+		"toasts": {
+			"success": "Inicio de sesión exitoso",
+			"danger": "Correo o contraseña inválidos"
+		},
+		"title": "Iniciar sesión",
+		"inputs": {
+			"email": "Correo",
+			"password": "Contraseña"
+		},
+		"registerSwitch": "¿No tienes una cuenta? Regístrate",
+		"cancel": "Cancelar",
+		"login": "Ingresar"
+	},
+	"register": {
+		"toasts": {
+			"success": "Registro exitoso",
+			"danger": "El correo ya está en uso"
+		},
+		"title": "Registro",
+		"inputs": {
+			"name": "Nombre",
+			"mobile": "Celular",
+			"email": "Correo",
+			"password": "Contraseña"
+		},
+		"loginSwitch": "¿Ya tienes una cuenta? Inicia sesión",
+		"cancel": "Cancelar",
+		"signIn": "Registrarse"
+	},
 	"contact": {
 		"title": "Contacto",
 		"information": {
@@ -54,6 +84,7 @@
 			"message": "Mensaje",
 			"send": "Enviar",
 			"confirmDialog": "¿Desea enviar el mensaje?",
+			"sendingMessage": "Se está enviando tu mensaje",
 			"messageSuccess": "Mensaje enviado exitosamente",
 			"messageFailure": "Ocurrió un problema en el envío del mensaje"
 		}

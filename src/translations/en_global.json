@@ -25,6 +25,36 @@
 		"yes": "Yes",
 		"no": "No"
 	},
+	"login": {
+		"toasts": {
+			"success": "Successful login",
+			"danger": "Invalid email or password"
+		},
+		"title": "Login",
+		"inputs": {
+			"email": "Email",
+			"password": "Password"
+		},
+		"registerSwitch": "Don't have an account? sign up",
+		"cancel": "Cancel",
+		"login": "Log in"
+	},
+	"register": {
+		"toasts": {
+			"success": "Successful registration",
+			"danger": "Email is already in use"
+		},
+		"title": "Register",
+		"inputs": {
+			"name": "Name",
+			"mobile": "Mobile",
+			"email": "Email",
+			"password": "Password"
+		},
+		"loginSwitch": "Already have an account? Log in",
+		"cancel": "Cancel",
+		"signIn": "Sign in"
+	},
 	"contact": {
 		"title": "Contact",
 		"information": {
@@ -54,6 +84,7 @@
 			"message": "Message",
 			"send": "Send",
 			"confirmDialog": "Do you want to send the message?",
+			"sendingMessage": "Your message is being sent",
 			"messageSuccess": "Message sent successfully",
 			"messageFailure": "There was a problem sending the message"
 		}

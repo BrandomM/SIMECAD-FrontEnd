@@ -1,17 +1,21 @@
 import styles from "./Register.module.scss";
 
-import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
 import { useToast } from "../../../hooks/useToast";
-import { Input } from "../../../components/Form/Input/Input";
+import { useTranslation } from "react-i18next";
 
 import { LoginService } from "../../../services/LoginService";
+
+import { Input } from "../../../components/Form/Input/Input";
+
 
 export function Register({ show, cancel, showLogin }) {
   const methods = useForm();
   const [isInvalid, setIsInvalid] = useState(false);
-
   const toast = useToast();
+  const { t } = useTranslation();
+  const T = (key) => t("register." + key);
 
   if (!show) {
     return <></>;
@@ -21,11 +25,11 @@ export function Register({ show, cancel, showLogin }) {
     const wasRegistered = await LoginService.registro(data);
     if (wasRegistered) {
       setIsInvalid(false);
-      toast("success", "Registro exisoto");
+      toast("success", T("toasts.success"));
       methods.reset();
     } else {
       setIsInvalid(true);
-      toast("danger", "El correo ya está en uso");
+      toast("danger", T("toasts.danger"));
     }
   };
 
@@ -41,7 +45,7 @@ export function Register({ show, cancel, showLogin }) {
           <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Registro</h5>
+                <h5 className="modal-title">{T("title")}</h5>
                 <button
                   type="button"
                   onClick={() => cancel()}
@@ -54,27 +58,27 @@ export function Register({ show, cancel, showLogin }) {
                 <div className={styles.form}>
                   <Input
                     type="text"
-                    label="Nombre"
+                    label={T("inputs.name")}
                     name="nombreRegistro"
                     required
                   />
                   <Input
                     type="text"
-                    label="Celular"
+                    label={T("inputs.mobile")}
                     name="celularRegistro"
                     minLength="10"
                     maxLength="10"
                   />
                   <Input
                     type="email"
-                    label="Correo"
+                    label={T("inputs.email")}
                     name="correoRegistro"
                     required
                     isInvalid={isInvalid}
                   />
                   <Input
                     type="password"
-                    label="Contraseña"
+                    label={T("inputs.password")}
                     name="contrasenaRegistro"
                     required
                     minLength="5"
@@ -83,7 +87,7 @@ export function Register({ show, cancel, showLogin }) {
                     onClick={() => displayLogin()}
                     className={`link-azulOscuro ${styles.pointer}`}
                   >
-                    ¿Ya tienes una cuenta? Inicia sesión
+                    {T("loginSwitch")}
                   </p>
                 </div>
               </div>
@@ -94,13 +98,12 @@ export function Register({ show, cancel, showLogin }) {
                   className="btn btn-blanco"
                   data-bs-dismiss="modal"
                 >
-                  Cancelar
+                  {T("cancel")}
                 </button>
                 <input
                   type="submit"
-                  //   onClick={() => confirm()}
                   className={"btn btn-azulClaro"}
-                  value="Registrarse"
+                  value={T("signIn")}
                 />
               </div>
             </div>

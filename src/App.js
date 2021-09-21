@@ -11,15 +11,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { ToastProvider } from "./context/ToastContext";
 import { ToastContainer } from "./components/Toast/ToastContainer/ToastContainer";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
-    <Router>
-      <ToastProvider>
-        <LandingPage />
-        <ToastContainer />
-      </ToastProvider>
-    </Router>
+    <UserProvider>
+      <Router>
+        <ToastProvider>
+          <LandingPage />
+          <ToastContainer />
+        </ToastProvider>
+      </Router>
+    </UserProvider>
   );
 }
 
