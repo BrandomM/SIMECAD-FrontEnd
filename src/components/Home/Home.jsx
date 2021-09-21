@@ -1,66 +1,119 @@
-// import styles from "./Home.module.scss";
+import styles from "./Home.module.scss";
+
+import carrusel1 from "../../assets/img/carrusel1.jpg";
+import carrusel2 from "../../assets/img/carrusel2.jpg";
+import carrusel3 from "../../assets/img/carrusel3.jpg";
+
+import home1 from "../../assets/img/home1.jpg";
+import home2 from "../../assets/img/home2.jpg";
+import home3 from "../../assets/img/home3.jpg";
 
 import { useState } from "react";
-import { useToast } from "../../hooks/useToast";
-import { ConfirmDialog } from "../ConfirmDialog/ConfirmDialog";
+
+import { Carousel } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 export function Home() {
-  const toast = useToast();
+  const { t } = useTranslation();
+  const T = (key) => t("home." + key);
 
-  const [showDialog, setShowDialog] = useState(false);
+  const [index, setIndex] = useState(0);
 
-  const toggleDialog = () => {
-    setShowDialog((prev) => !prev);
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
   };
-
-  const confirm = () => {
-    console.log("Confirm");
-    setShowDialog(false);
-    toast("info", "Ha confirmado la opción")
-  };
-
-  const cancel = () => {
-    setShowDialog(false);
-  }
 
   return (
-    <div>
-      <button
-        className="btn btn-verde"
-        onClick={() => toast("success", "Mensaje enviado exitosamente")}
-      >
-        Toast success
-      </button>
-      <button
-        className="btn btn-azulClaro"
-        onClick={() => toast("info", "Nuevos productos disponibles")}
-      >
-        Toast info
-      </button>
-      <button
-        className="btn btn-naranja"
-        onClick={() => toast("warning", "Se eliminará de forma definitiva")}
-      >
-        Toast warning
-      </button>
-      <button
-        className="btn btn-rojo"
-        onClick={() => toast("danger", "No se pudo eliminar el registro")}
-      >
-        Toast danger
-      </button>
+    <div className={styles.home}>
+      <Carousel activeIndex={index} onSelect={handleSelect}>
+        <Carousel.Item>
+          <img className="d-block w-100" src={carrusel1} alt="..." />
+          <Carousel.Caption>
+            <h3>{T("carousel.slide1.title")}</h3>
+            <p className={styles.carouselSubtitle}>
+              {T("carousel.slide1.subtitle")}
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src={carrusel2} alt="..." />
+          <Carousel.Caption>
+            <h3>{T("carousel.slide2.title")}</h3>
+            <p className={styles.carouselSubtitle}>
+              {T("carousel.slide2.subtitle")}
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src={carrusel3} alt="..." />
+          <Carousel.Caption>
+            <h3>{T("carousel.slide3.title")}</h3>
+            <p className={styles.carouselSubtitle}>
+              {T("carousel.slide3.subtitle")}
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
 
-      <button className="btn btn-azulOscuro" onClick={() => toggleDialog()}>
-        Confirm dialog
-      </button>
+      <div className={`card ${styles.card}`}>
+        <img src={home1} alt="..." className={styles.picture} />
+        <div className={styles.information}>
+          <h3 className={styles.informationTitle}>
+            {T("cards.card1.title")}
+          </h3>
+          <p className={styles.informationText}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+            saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
+            quisquam, natus asperiores dolores, nobis quas ab illo molestiae
+            sapiente laborum!
+          </p>
+          <div className={styles.informationButton}>
+            <button className={`btn btn-azulClaro`}>
+              {T("cards.card1.button")}
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <ConfirmDialog
-        show={showDialog}
-        confirm={() => confirm()}
-        cancel={() => cancel()}
-        type="confirm"
-        message={"¿Desea guardar cambios?"}
-      />
+      <div className={`card ${styles.card}`}>
+        <img src={home2} alt="..." className={styles.picture} />
+        <div className={styles.information}>
+          <h3 className={styles.informationTitle}>
+            {T("cards.card2.title")}
+          </h3>
+          <p className={styles.informationText}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+            saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
+            quisquam, natus asperiores dolores, nobis quas ab illo molestiae
+            sapiente laborum!
+          </p>
+          <div className={styles.informationButton}>
+            <button className={`btn btn-verde ${styles.textWhite}`}>
+              {T("cards.card2.button")}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className={`card ${styles.card}`}>
+        <img src={home3} alt="..." className={styles.picture} />
+        <div className={styles.information}>
+          <h3 className={styles.informationTitle}>
+            {T("cards.card3.title")}
+          </h3>
+          <p className={styles.informationText}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+            saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
+            quisquam, natus asperiores dolores, nobis quas ab illo molestiae
+            sapiente laborum!
+          </p>
+          <div className={styles.informationButton}>
+            <button className={`btn btn-naranja ${styles.textWhite}`}>
+              {T("cards.card3.button")}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

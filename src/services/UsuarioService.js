@@ -4,11 +4,11 @@ const API = "http://localhost:8080/api/usuario";
 
 export const UsuarioService = {
 
-  listarUsuarios: () => {
-    axios
+  listarUsuarios: async () => {
+    return axios
       .get(API + "/listar")
       .then((response) => {
-        console.log(response);
+        return response.data;
       })
       .catch(function (error) {
         console.log(error);

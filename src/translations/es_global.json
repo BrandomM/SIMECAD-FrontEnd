@@ -7,7 +7,9 @@
 		"home": "Inicio",
 		"products": "Productos",
 		"about us": "Sobre nosotros",
-		"contact": "Contacto"
+		"contact": "Contacto",
+		"users": "Usuarios",
+		"sales": "Ventas"
 	},
 	"form": {
 		"errors": {
@@ -55,6 +57,48 @@
 		"cancel": "Cancelar",
 		"signIn": "Registrarse"
 	},
+	"home": {
+		"carousel": {
+			"slide1": {
+				"title": "Reparaciones",
+				"subtitle": "Total confiabilidad"
+			},
+			"slide2": {
+				"title": "Mecanismos",
+				"subtitle": "De todo tipo"
+			},
+			"slide3": {
+				"title": "Herramientas",
+				"subtitle": "En el mejor estado"
+			}
+		},
+		"cards": {
+			"card1": {
+				"title": "Servicios técnicos",
+				"button": "Agendar una cita"
+			},
+			"card2": {
+				"title": "Productos",
+				"button": "Ver productos"
+			},
+			"card3": {
+				"title": "Sobre nosotros",
+				"button": "Conócenos"
+			}
+		}
+	},
+	"about": {
+		"title": "Sobre nosotros",
+		"mission": {
+			"title": "Misión"
+		},
+		"vision": {
+			"title": "Visión"
+		},
+		"experience": {
+			"title": "Nuestra experiencia"
+		}
+	},
 	"contact": {
 		"title": "Contacto",
 		"information": {
@@ -88,5 +132,8 @@
 			"messageSuccess": "Mensaje enviado exitosamente",
 			"messageFailure": "Ocurrió un problema en el envío del mensaje"
 		}
+	},
+	"users": {
+		"title": "Usuarios"
 	}
 }

@@ -1,0 +1,84 @@
+@import "../../assets/scss/themeColors";
+
+.about {
+  padding: 10px 20px 20px;
+
+  .cardsContainer {
+    display: grid;
+    grid-template:
+      "mision vision"
+      "history history" /
+      1fr 1fr;
+    column-gap: 20px;
+
+    .card {
+      background-color: $gray-100;
+      margin: 20px 0;
+      padding: 20px;
+      display: grid;
+      text-align: center;
+      justify-content: center;
+
+      .icon {
+        font-size: 8rem;
+      }
+    }
+
+    .mision {
+      grid-area: mision;
+    }
+
+    .vision {
+      grid-area: vision;
+    }
+
+    .history {
+      grid-area: history;
+      display: grid;
+      grid-template:
+        "title title"
+        "picture information" /
+        1fr 2fr;
+      column-gap: 20px;
+      align-items: center;
+
+      .title {
+        grid-area: title;
+        margin-bottom: 20px;
+      }
+
+      .picture {
+        grid-area: picture;
+        width: 100%;
+        height: auto;
+        border-radius: 0.25rem;
+        @media (max-width: 1200px) {
+          padding: 40px;
+        }
+        @media (max-width: 768px) {
+            padding: 10px;
+        }
+
+      }
+
+      .information {
+        grid-area: information;
+        padding: 20px;
+      }
+
+      @media (max-width: 1200px) {
+        grid-template:
+          "title"
+          "picture"
+          "information";
+      }
+    }
+
+    @media (max-width: 768px) {
+      grid-template:
+        "mision"
+        "vision"
+        "history";
+    }
+  }
+}

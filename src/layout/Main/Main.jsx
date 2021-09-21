@@ -3,7 +3,8 @@ import styles from "./Main.module.scss";
 import { Switch, Route } from "react-router";
 import { Home } from "../../components/Home/Home";
 import { Contact } from "../../components/Contact/Contact";
-
+import { Users } from "../../components/Users/Users";
+import { About } from "../../components/About/About";
 
 export function Main() {
   return (
@@ -11,6 +12,12 @@ export function Main() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/usuarios">
+          <Users />
+        </Route>
+        <Route path="/nosotros">
+          <About />
         </Route>
         <Route path="/contacto">
           <Contact />

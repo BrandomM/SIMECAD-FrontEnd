@@ -1,3 +1,71 @@
+@import "../../assets/scss/themeColors";
+
 .home {
-    
+  padding: 10px 20px 20px;
+
+  .card {
+    background-color: $gray-100;
+    margin: 20px 0;
+    padding: 20px;
+    display: grid;
+    align-items: center;
+    grid-template:
+      "picture information" /
+      2fr 4fr;
+
+    .picture {
+      grid-area: picture;
+      height: 200px;
+      width: auto;
+      border-radius: 0.25rem;
+      margin-right: 20px;
+
+      @media (max-width: 1400px) {
+        height: 160px;
+      }
+
+      @media (max-width: 1024px) {
+          margin: 0 auto 20px;
+      }
+
+    }
+
+    .information {
+      text-align: center;
+      grid-area: information;
+      display: grid;
+      align-items: center;
+      grid-template:
+        "informationTitle"
+        "informationText"
+        "informationButton";
+
+      .informationTitle {
+        grid-area: informationTitle;
+      }
+
+      .informationText {
+        grid-area: informationText;
+      }
+
+      .informationButton {
+        grid-area: informationButton;
+        .textWhite{
+            color: white;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      grid-template: "picture" "information";
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    .carouselSubtitle {
+      display: none;
+    }
+  }
 }

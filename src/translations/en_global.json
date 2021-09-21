@@ -7,7 +7,9 @@
 		"home": "Home",
 		"products": "Products",
 		"about us": "About us",
-		"contact": "Contact"
+		"contact": "Contact",
+		"users": "Users",
+		"sales": "Sells"
 	},
 	"form": {
 		"errors": {
@@ -55,6 +57,48 @@
 		"cancel": "Cancel",
 		"signIn": "Sign in"
 	},
+	"home": {
+		"carousel": {
+			"slide1": {
+				"title": "Repairs",
+				"subtitle": "Total reliability"
+			},
+			"slide2": {
+				"title": "Mechanisms",
+				"subtitle": "All types"
+			},
+			"slide3": {
+				"title": "Tools",
+				"subtitle": "In the best condition"
+			}
+		},
+		"cards": {
+			"card1": {
+				"title": "Technical services",
+				"button": "Schedule an Appointment"
+			},
+			"card2": {
+				"title": "Products",
+				"button": "See products"
+			},
+			"card3": {
+				"title": "About us",
+				"button": "Get to know us"
+			}
+		}
+	},
+	"about": {
+		"title": "About us",
+		"mission": {
+			"title": "Mission"
+		},
+		"vision": {
+			"title": "Vision"
+		},
+		"experience": {
+			"title": "Our experience"
+		}
+	},
 	"contact": {
 		"title": "Contact",
 		"information": {
@@ -88,5 +132,8 @@
 			"messageSuccess": "Message sent successfully",
 			"messageFailure": "There was a problem sending the message"
 		}
+	},
+	"users": {
+		"title": "Users"
 	}
 }
