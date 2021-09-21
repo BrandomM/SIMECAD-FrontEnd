@@ -10,10 +10,12 @@ import { Ripple } from "primereact/ripple";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
+import { Button } from "primereact/button";
+import { Tooltip } from "primereact/tooltip";
 // import { Column } from "primereact/column";
 
 export const CustomDataTable = forwardRef(
-  ({ value, loading = false, children }, ref) => {
+  ({ value, loading = false, dt, cols, filename, children }, ref) => {
     const { t } = useTranslation();
     // const T = (key) => t("dataTable.");
 
@@ -145,24 +147,96 @@ export const CustomDataTable = forwardRef(
       },
     };
 
+    const exportCSV = (selectionOnly) => {
+      dt.current.exportCSV({ selectionOnly });
+    };
+
+    const exportExcel = () => {
+      import("xlsx").then((xlsx) => {
+        const worksheet = xlsx.utils.json_to_sheet(value);
+        const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
+        const excelBuffer = xlsx.write(workbook, {
+          bookType: "xlsx",
+          type: "array",
+        });
+        saveAsExcelFile(excelBuffer, filename);
+      });
+    };
+
+    const saveAsExcelFile = (buffer, fileName) => {
+      import("file-saver").then((FileSaver) => {
+        let EXCEL_TYPE =
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+        let EXCEL_EXTENSION = ".xlsx";
+        const data = new Blob([buffer], {
+          type: EXCEL_TYPE,
+        });
+        FileSaver.saveAs(
+          data,
+          fileName + "_export_" + new Date().getTime() + EXCEL_EXTENSION
+        );
+      });
+    };
+
+    const exportColumns = cols.map((col) => ({
+      title: col.header,
+      dataKey: col.field,
+    }));
+
+    const exportPdf = () => {
+      import("jspdf").then((jsPDF) => {
+        import("jspdf-autotable").then(() => {
+          const doc = new jsPDF.default(0, 0);
+          doc.autoTable(exportColumns, value);
+          doc.save(filename+".pdf");
+        });
+      });
+    };
+
     return (
-      <div className={`${styles["datatable-responsive-demo"]}`}>
-        <div className={`${styles.roca} card roca`}>
-          <DataTable
-            value={value}
-            paginator
-            paginatorTemplate={template}
-            first={first}
-            rows={rows}
-            onPage={onCustomPage}
-            className="p-datatable-responsive-demo"
-            loading={loading}
-            ref={ref}
-          >
-            {children}
-          </DataTable>
+      <>
+        <div className="export-buttons">
+          <Button
+            type="button"
+            icon="pi pi-file-o"
+            onClick={() => exportCSV(false)}
+            className="p-mr-2"
+            data-pr-tooltip="CSV"
+          />
+          <Button
+            type="button"
+            icon="pi pi-file-excel"
+            onClick={exportExcel}
+            className="p-button-success p-mr-2"
+            data-pr-tooltip="XLS"
+          />
+          <Button
+            type="button"
+            icon="pi pi-file-pdf"
+            onClick={exportPdf}
+            className="p-button-warning p-mr-2"
+            data-pr-tooltip="PDF"
+          />
         </div>
-      </div>
+        <Tooltip target=".export-buttons>button" position="bottom" />
+        <div className={`${styles["datatable-responsive-demo"]}`}>
+          <div className={`${styles.roca} card roca`}>
+            <DataTable
+              value={value}
+              paginator
+              paginatorTemplate={template}
+              first={first}
+              rows={rows}
+              onPage={onCustomPage}
+              className="p-datatable-responsive-demo"
+              loading={loading}
+              ref={ref}
+            >
+              {children}
+            </DataTable>
+          </div>
+        </div>
+      </>
     );
   }
 );
