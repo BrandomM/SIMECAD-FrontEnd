@@ -2,7 +2,7 @@ import styles from "./Select.module.scss";
 
 import { useFormContext } from "react-hook-form";
 
-export function Select({ label, name, children }) {
+export function Select({ label, name, children, value }) {
   const { register } = useFormContext();
 
   return (
@@ -14,6 +14,7 @@ export function Select({ label, name, children }) {
         id={name}
         className={`form-select`}
         {...register(name, {})}
+        defaultValue={value}
       >
         {children}
       </select>

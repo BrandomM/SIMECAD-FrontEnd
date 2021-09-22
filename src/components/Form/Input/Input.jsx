@@ -15,6 +15,7 @@ export function Input({
   max,
   pattern,
   isInvalid=false,
+  value,
 }) {
   const { t } = useTranslation();
   const T = (key) => t("form.errors." + key);
@@ -46,6 +47,7 @@ export function Input({
           max,
           pattern,
         })}
+        defaultValue={value}
       />
       {errors[name]?.type === "required" && InvalidFeedback(T("required"))}
       {errors[name]?.type === "minLength" &&

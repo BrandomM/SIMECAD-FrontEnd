@@ -1,26 +1,40 @@
-import styles from "./CreateUser.module.scss";
+import styles from "./EditUser.module.scss";
 
 import defaulUserPicture from "../../../assets/img/defaultUserPicture.png";
 
-import { useState } from "react";
+import { useParams } from "react-router";
+import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useToast } from "../../../hooks/useToast";
 
 import { UsuarioService } from "../../../services/UsuarioService";
 
+import { Link } from "react-router-dom";
 import { Input } from "../../Form/Input/Input";
+import { InputHidden } from "../../Form/InputHidden/InputHidden";
 import { Select } from "../../Form/Select/Select";
 import { InputFile } from "../../Form/InputFile/InputFile";
 import { ConfirmDialog } from "../../ConfirmDialog/ConfirmDialog";
-import { Link } from "react-router-dom";
 
-export function CreateUser() {
+export function EditUser() {
+  const { usuarioId } = useParams();
+  const [usuarioEdit, setUsuarioEdit] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const usuario = await UsuarioService.buscarUsuarioPorId(usuarioId);
+      setUsuarioEdit(usuario);
+    };
+    fetchUser();
+  }, [usuarioId]);
+
   const [formData, setFormData] = useState({});
   const [showDialog, setShowDialog] = useState(false);
   const [previewPicture, setPreviewPicture] = useState(defaulUserPicture);
 
-  const methods = useForm();
   const toast = useToast();
+
+  const methods = useForm();
 
   const onSubmit = (data) => {
     setFormData(data);
@@ -29,12 +43,12 @@ export function CreateUser() {
 
   const confirm = async () => {
     setShowDialog(false);
-    toast("info", "Se está registrando el usuario");
-    const wasRegistered = await UsuarioService.registrarUsuario(formData);
-    if (wasRegistered) {
-      toast("success", "Usuario registrado con éxito");
+    toast("info", "Se está actualizando el usuario");
+    const wasUpdated = await UsuarioService.actualizarUsuario(formData);
+    if (wasUpdated) {
+      toast("success", "Usuario actualizado con éxito");
     } else {
-      toast("danger", "Ocurrió un problema en el registro");
+      toast("danger", "Ocurrió un problema durante la actualización");
     }
     methods.reset();
   };
@@ -54,7 +68,7 @@ export function CreateUser() {
   };
 
   return (
-    <div className={styles.createUser}>
+    <div className={styles.editUser}>
       <div className={styles.header}>
         <Link
           to="/usuarios"
@@ -70,7 +84,25 @@ export function CreateUser() {
               onSubmit={methods.handleSubmit(onSubmit)}
               encType="multipart/form-data"
             >
-              <Input type="text" label="Nombre" name="nombre" required />
+              <InputHidden
+                name="id"
+                value={usuarioEdit?.id ? usuarioEdit.id : ""}
+              />
+              <InputHidden
+                name="contrasena"
+                value={usuarioEdit?.contrasena ? usuarioEdit.contrasena : ""}
+              />
+              <InputHidden
+                name="imagen"
+                value={usuarioEdit?.imagen ? usuarioEdit.imagen : ""}
+              />
+              <Input
+                type="text"
+                label="Nombre"
+                name="nombre"
+                required
+                value={usuarioEdit?.nombre ? usuarioEdit.nombre : ""}
+              />
               <Input
                 type="text"
                 label="Celular"
@@ -78,18 +110,21 @@ export function CreateUser() {
                 required
                 minLength="10"
                 maxLength="10"
+                value={usuarioEdit?.celular ? usuarioEdit.celular : ""}
               />
-              <Input type="email" label="Correo" name="correo" required />
-              <Select label="Rol" name="rol">
+              <Input
+                type="email"
+                label="Correo"
+                name="correo"
+                required
+                value={usuarioEdit?.correo ? usuarioEdit.correo : ""}
+              />
+              <Select label="Rol" name="rol" value={usuarioEdit?.rol}>
                 <option value="Cliente">Cliente</option>
                 <option value="Empleado">Empleado</option>
                 <option value="Administrador">Administrador</option>
               </Select>
-              <InputFile
-                name="foto"
-                label="Foto"
-                onChange={imageHandler}
-              />
+              <InputFile name="foto" label="Foto" onChange={imageHandler} />
               <div className={styles.buttonContainer}>
                 <input
                   type="submit"
@@ -104,12 +139,12 @@ export function CreateUser() {
             confirm={() => confirm()}
             cancel={() => cancel()}
             type="confirm"
-            message={"¿Desea registrar el usuario?"}
+            message={"¿Desea actualizar el usuario?"}
           />
         </FormProvider>
         <div className={`card ${styles.picture}`}>
           <img
-            src={previewPicture}
+            src={usuarioEdit?.imagen ? usuarioEdit?.imagen : previewPicture}
             className={`card-img-top ${styles.profilePicture}`}
             alt="..."
           />

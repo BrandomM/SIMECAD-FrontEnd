@@ -56,6 +56,12 @@ export function UsersTable() {
   const actionsBodyTemplate = (usuario) => {
     return (
       <>
+        <Link
+          className={`btn btn-azulClaro px-3 mx-2`}
+          to={"/usuarios/editar/" + usuario.id}
+        >
+          Editar
+        </Link>
         <button className={`btn btn-rojo`} onClick={() => onDelete(usuario)}>
           Eliminar
         </button>

@@ -1,0 +1,46 @@
+@import "../../../assets/scss/themeColors";
+
+.editUser {
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    .btnRegresar {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template:
+      "form picture" /
+      1fr 1fr;
+    column-gap: 20px;
+
+    .userForm {
+      grid-area: form;
+      background-color: $gray-100;
+      padding: 20px 40px;
+      border-radius: 0.25rem;
+      .buttonContainer {
+        display: flex;
+        justify-content: flex-end;
+        margin: 40px 0 0;
+      }
+    }
+
+    .picture {
+      grid-area: picture;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $gray-100;
+      .profilePicture{
+        width: 420px;
+        height: 420px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
