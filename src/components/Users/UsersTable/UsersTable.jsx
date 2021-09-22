@@ -3,6 +3,7 @@ import styles from "./UsersTable.module.scss";
 import defaultUserPicture from "../../../assets/img/defaultUserPicture.png";
 
 import { useRef, useState, useEffect } from "react";
+import { useToast } from "../../../hooks/useToast";
 
 import { UsuarioService } from "../../../services/UsuarioService";
 
@@ -10,10 +11,15 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { CsvReader } from "../../CsvReader/CsvReader";
 import { CustomDataTable } from "../../CustomDataTable/CustomDataTable";
 import { Column } from "primereact/column";
+import { ConfirmDialog } from "../../ConfirmDialog/ConfirmDialog";
 
 export function UsersTable() {
   const [usuarios, setUsuarios] = useState([]);
   const [updateTable, setUpdateTable] = useState(false);
+  const [selectedUser, setSelectedUser] = useState({ nombre: "" });
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const toast = useToast();
+
   const dt = useRef(null);
 
   let match = useRouteMatch();
@@ -45,6 +51,36 @@ export function UsersTable() {
         className={styles.tablePicture}
       />
     );
+  };
+
+  const actionsBodyTemplate = (usuario) => {
+    return (
+      <>
+        <button className={`btn btn-rojo`} onClick={() => onDelete(usuario)}>
+          Eliminar
+        </button>
+      </>
+    );
+  };
+
+  const onDelete = (usuario) => {
+    setSelectedUser(usuario);
+    setShowDeleteDialog(true);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteDialog(false);
+  };
+
+  const deleteUser = () => {
+    const wasDeleted = UsuarioService.eliminarUsuario(selectedUser);
+    if (wasDeleted) {
+      toast("success", "Usuario eliminado exitosamente");
+    } else {
+      toast("danger", "No se pudo eliminar el usuario");
+    }
+    setShowDeleteDialog(false);
+    setUpdateTable(true);
   };
 
   return (
@@ -81,7 +117,16 @@ export function UsersTable() {
         <Column field="celular" header="Celular" sortable />
         <Column field="correo" header="Correo" sortable />
         <Column field="rol" header="Rol" sortable />
+        <Column body={actionsBodyTemplate} />
       </CustomDataTable>
+
+      <ConfirmDialog
+        show={showDeleteDialog}
+        cancel={cancelDelete}
+        type="delete"
+        message={`¿Desea eliminar al usuario ${selectedUser.nombre}?`}
+        confirm={deleteUser}
+      />
     </div>
   );
 }

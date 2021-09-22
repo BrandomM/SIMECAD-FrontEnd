@@ -73,4 +73,16 @@ export const UsuarioService = {
         });
     }
   },
+
+  eliminarUsuario: async (usuario) => {
+    return await axios
+      .delete(API + "/eliminar", { data: usuario })
+      .then((response) => {
+        return true;
+      })
+      .catch((error) => {
+        console.log(error);
+        return false;
+      });
+  },
 };
