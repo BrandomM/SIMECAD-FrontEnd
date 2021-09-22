@@ -17,14 +17,12 @@ import { Tooltip } from "primereact/tooltip";
 export const CustomDataTable = forwardRef(
   ({ value, loading = false, dt, cols, filename, children }, ref) => {
     const { t } = useTranslation();
-    // const T = (key) => t("dataTable.");
+    const T = (key) => t("customDataTable." + key);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(10);
-    const [pageInputTooltip, setPageInputTooltip] = useState(
-      "Press 'Enter' key to go to this page."
-    );
+    const [pageInputTooltip, setPageInputTooltip] = useState(T("pressEnter"));
 
     const onCustomPage = (event) => {
       setFirst(event.first);
@@ -37,13 +35,13 @@ export const CustomDataTable = forwardRef(
         const page = parseInt(currentPage);
         if (page < 0 || page > options.totalPages) {
           setPageInputTooltip(
-            `Value must be between 1 and ${options.totalPages}.`
+            `${T("valueMustBe")} ${options.totalPages}.`
           );
         } else {
           const first = currentPage ? options.rows * (page - 1) : 0;
 
           setFirst(first);
-          setPageInputTooltip("Press 'Enter' key to go to this page.");
+          setPageInputTooltip(T("pressEnter"));
         }
       }
     };
@@ -63,7 +61,7 @@ export const CustomDataTable = forwardRef(
             onClick={options.onClick}
             disabled={options.disabled}
           >
-            <span className="p-p-3">Previous</span>
+            <span className="p-p-3">{T("previous")}</span>
             <Ripple />
           </button>
         );
@@ -76,7 +74,7 @@ export const CustomDataTable = forwardRef(
             onClick={options.onClick}
             disabled={options.disabled}
           >
-            <span className="p-p-3">Next</span>
+            <span className="p-p-3">{T("next")}</span>
             <Ripple />
           </button>
         );
@@ -115,7 +113,7 @@ export const CustomDataTable = forwardRef(
           { label: 10, value: 10 },
           { label: 20, value: 20 },
           { label: 50, value: 50 },
-          { label: "All", value: options.totalRecords },
+          { label: T("all"), value: options.totalRecords },
         ];
 
         return (
@@ -188,35 +186,42 @@ export const CustomDataTable = forwardRef(
         import("jspdf-autotable").then(() => {
           const doc = new jsPDF.default(0, 0);
           doc.autoTable(exportColumns, value);
-          doc.save(filename+".pdf");
+          doc.save(filename + ".pdf");
         });
       });
     };
 
     return (
       <>
-        <div className="export-buttons">
-          <Button
-            type="button"
-            icon="pi pi-file-o"
-            onClick={() => exportCSV(false)}
-            className="p-mr-2"
-            data-pr-tooltip="CSV"
-          />
-          <Button
-            type="button"
-            icon="pi pi-file-excel"
-            onClick={exportExcel}
-            className="p-button-success p-mr-2"
-            data-pr-tooltip="XLS"
-          />
-          <Button
-            type="button"
-            icon="pi pi-file-pdf"
-            onClick={exportPdf}
-            className="p-button-warning p-mr-2"
-            data-pr-tooltip="PDF"
-          />
+        <div className="export-buttons mb-3 mt-3 d-flex">
+          <strong>{T("export")}</strong>
+          <div className="px-3">
+            <Button
+              type="button"
+              icon="pi pi-file-o"
+              onClick={() => exportCSV(false)}
+              className="p-mr-2"
+              data-pr-tooltip="CSV"
+            />
+          </div>
+          <div className="px-3">
+            <Button
+              type="button"
+              icon="pi pi-file-excel"
+              onClick={exportExcel}
+              className="p-button-success p-mr-2"
+              data-pr-tooltip="XLS"
+            />
+          </div>
+          <div className="px-3">
+            <Button
+              type="button"
+              icon="pi pi-file-pdf"
+              onClick={exportPdf}
+              className="p-button-warning p-mr-2"
+              data-pr-tooltip="PDF"
+            />
+          </div>
         </div>
         <Tooltip target=".export-buttons>button" position="bottom" />
         <div className={`${styles["datatable-responsive-demo"]}`}>

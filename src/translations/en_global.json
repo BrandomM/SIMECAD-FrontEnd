@@ -27,6 +27,14 @@
 		"yes": "Yes",
 		"no": "No"
 	},
+	"customDataTable": {
+		"export": "Export",
+		"pressEnter": "Press 'Enter' key to go to this page",
+		"valueMustBe": "Value must be between 1 and",
+		"all": "All",
+		"previous": "Previous",
+		"next": "Next"
+	},
 	"login": {
 		"toasts": {
 			"success": "Successful login",

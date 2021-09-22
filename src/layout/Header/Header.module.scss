@@ -48,6 +48,8 @@
 
     .userPicture {
       height: $headerHeight * 0.5;
+      width: $headerHeight * 0.5;
+      object-fit: cover;
       margin-left: 10px;
       border-radius: 0.25rem;
       background-color: white;

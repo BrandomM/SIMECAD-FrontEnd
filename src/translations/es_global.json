@@ -27,6 +27,18 @@
 		"yes": "Sí",
 		"no": "No"
 	},
+	"customDataTable": {
+		"export": "Exportar",
+		"pressEnter": "Presiona 'Enter' para ir a esta página",
+		"valueMustBe": "El valor debe estar entre 1 y",
+		"all": "Todas",
+		"previous": "Previa",
+		"next": "Siguiente",
+		"csvImport": {
+			"success": "Datos importados con éxito",
+			"danger": "Ocurrió un problema en la carga de datos"
+		}
+	},
 	"login": {
 		"toasts": {
 			"success": "Inicio de sesión exitoso",
