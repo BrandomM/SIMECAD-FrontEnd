@@ -129,7 +129,7 @@ export function EditUser() {
                 <input
                   type="submit"
                   className="btn btn-azulOscuro"
-                  value="Registrar"
+                  value="Actualizar"
                 />
               </div>
             </form>

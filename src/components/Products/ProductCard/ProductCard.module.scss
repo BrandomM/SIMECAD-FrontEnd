@@ -1,0 +1,15 @@
+@import "../../../assets/scss/themeColors";
+
+.productCard {
+  list-style: none;
+  font-size: 1.5rem;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  background-color: $gray-100;
+  
+  .picture{
+      object-fit: cover;
+      height: 200px;
+  }
+}
