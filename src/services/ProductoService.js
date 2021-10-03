@@ -13,6 +13,16 @@ export const ProductoService = {
         console.log(error);
       });
   },
+  listarProductosDisponibles: async () => {
+    return axios
+      .get(API + "/listar-disponibles")
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
   buscarProductoPorId: async (id) => {
     return await axios
       .get(API + "/id/" + id)
@@ -95,7 +105,7 @@ export const ProductoService = {
       formData.append("categoria", producto.categoria);
 
       formData.append("id", producto.id);
-      formData.append("imagen", producto.imagen)
+      formData.append("imagen", producto.imagen);
 
       return await axios
         .put(API + "/modificarConFoto", formData, {

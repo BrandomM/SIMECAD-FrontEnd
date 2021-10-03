@@ -1,15 +1,24 @@
 @import "../../../assets/scss/themeColors";
 
 .productCard {
-  list-style: none;
   font-size: 1.5rem;
   text-align: center;
   justify-content: center;
   display: grid;
   background-color: $gray-100;
-  
-  .picture{
-      object-fit: cover;
-      height: 200px;
+  border: 1px solid $gray-400;
+  padding: 20px;
+
+  .picture {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 0.25rem;
+    border: 1px solid $gray-400;
+    margin-bottom: 20px;
+  }
+
+  .button{
+    margin-top: 10px;
   }
 }

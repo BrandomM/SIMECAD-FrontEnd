@@ -9,7 +9,7 @@ export function ProductCardContainer() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await ProductoService.listarProductos();
+      const response = await ProductoService.listarProductosDisponibles();
       setProductos(response);
     };
     fetchProducts();

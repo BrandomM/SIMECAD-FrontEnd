@@ -26,13 +26,31 @@ export function CartItem({ producto, cantidad }) {
 
   return (
     <li className={styles.cartItem}>
-      <h3>{producto.nombre}</h3>
-      <img src={producto.imagen} alt={producto.nombre} />
-      <h4>${producto.precio}</h4>
-      <h3>Cantidad: {cantidad}</h3>
-      <button onClick={() => decrease(producto.id)}>[-]</button>
-      <button onClick={() => increase(producto.id)}>[+]</button>
-      <button onClick={() => remove(producto.id)}>Remover del carrito</button>
+      <div className={styles.namePrice}>
+        <h4>{producto.nombre}</h4>
+        <h5>Precio unitario: ${producto.precio}</h5>
+      </div>
+      <img
+        className={styles.picture}
+        src={producto.imagen}
+        alt={producto.nombre}
+      />
+      <div className={styles.quantity}>
+        <button
+          className={`btn btn-azulClaro ${styles.button}`}
+          onClick={() => decrease(producto.id)}
+        >
+          <i className="bi bi-dash-lg"></i>
+        </button>
+        <h3>{cantidad}</h3>
+        <button
+          className={`btn btn-azulClaro ${styles.button}`}
+          onClick={() => increase(producto.id)}
+        >
+          <i className="bi bi-plus-lg" />
+        </button>
+      </div>
+      <button className="btn btn-naranja text-white" onClick={() => remove(producto.id)}>Remover del carrito</button>
     </li>
   );
 }

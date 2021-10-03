@@ -1,4 +1,15 @@
 .cart {
   .cartList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
+  .buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    .buyButton{
+      
+    }
+  }
+
 }

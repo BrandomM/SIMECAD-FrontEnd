@@ -1,6 +1,6 @@
 import styles from "./ShoppingCart.module.scss";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShoppingCartContext } from "../../context/ShoppingCartContext";
 import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
@@ -9,12 +9,14 @@ import { VentaService } from "../../services/VentaService";
 
 import { MainTitle } from "../MainTitle/MainTitle";
 import { CartItem } from "./CartItem/CartItem";
+import { ConfirmDialog } from "../ConfirmDialog/ConfirmDialog";
 
 export function ShoppingCart() {
   const { shoppingCart, shoppingCartDispatch } =
     useContext(ShoppingCartContext);
   const { user } = useContext(UserContext);
   const toast = useToast();
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const buy = async () => {
     const venta = {
@@ -28,6 +30,11 @@ export function ShoppingCart() {
     } else {
       toast("danger", "No se pudo realizar la compra");
     }
+    setShowConfirmDialog(false);
+  };
+
+  const cancel = () => {
+    setShowConfirmDialog(false);
   };
 
   return (
@@ -42,7 +49,21 @@ export function ShoppingCart() {
           />
         ))}
       </ul>
-      <button onClick={() => buy()}>Comprar</button>
+      <div className={styles.buttonContainer}>
+        <button
+          className={`btn btn-azulClaro ${styles.buyButton}`}
+          onClick={() => setShowConfirmDialog(true)}
+        >
+          Comprar
+        </button>
+      </div>
+      <ConfirmDialog
+        show={showConfirmDialog}
+        cancel={cancel}
+        type="confirm"
+        message={`¿Desea realizar la compra?`}
+        confirm={buy}
+      />
     </div>
   );
 }

@@ -11,9 +11,11 @@ import { LoginService } from "../../../services/LoginService";
 import { Input } from "../../../components/Form/Input/Input";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
+import { ShoppingCartContext } from "../../../context/ShoppingCartContext";
 
 export function Login({ show, cancel, showRegister }) {
   const { setUser } = useContext(UserContext);
+  const { shoppingCartDispatch } = useContext(ShoppingCartContext);
   const methods = useForm();
   const [isInvalid, setIsInvalid] = useState(false);
   const toast = useToast();
@@ -33,6 +35,7 @@ export function Login({ show, cancel, showRegister }) {
       methods.reset();
       cancel();
       setUser(loginResponse.usuarioDTO);
+      shoppingCartDispatch({ type: "RESET_CART" });
       history.push("/");
     } else {
       setIsInvalid(true);

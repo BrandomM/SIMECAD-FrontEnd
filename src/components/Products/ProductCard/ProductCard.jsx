@@ -31,39 +31,36 @@ export function ProductCard({ producto }) {
   };
 
   return (
-    <li className={`${styles.productCard} card p-5`}>
-      <img
-        className={styles.picture}
-        width={230}
-        height={345}
-        src={producto.imagen}
-        alt="..."
-      />
+    <div className={`${styles.productCard}`}>
       <div className="card-body">
+        <img className={styles.picture} src={producto.imagen} alt="..." />
         <h5 className="card-title">{producto.nombre}</h5>
         <h4 className="mt-3">{`$ ${producto.precio}`}</h4>
         {user?.rol !== "Cliente" ? (
-          <button className="btn btn-azulClaro" onClick={() => shouldLogin()}>
+          <button
+            className={`btn btn-azulClaro ${styles.button}`}
+            onClick={() => shouldLogin()}
+          >
             Agregar al carrito
           </button>
         ) : shoppingCart.filter(
             (cartElement) => cartElement.producto.id === producto.id
           ).length <= 0 ? (
           <button
-            className="btn btn-azulClaro"
+            className={`btn btn-azulClaro ${styles.button}`}
             onClick={() => addProduct(producto)}
           >
             Agregar al carrito
           </button>
         ) : (
           <button
-            className="btn btn-azulClaro"
+            className={`btn btn-naranja text-white ${styles.button}`}
             onClick={() => removeProduct(producto.id)}
           >
             Remover del carrito
           </button>
         )}
       </div>
-    </li>
+    </div>
   );
 }

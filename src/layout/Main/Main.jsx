@@ -8,6 +8,7 @@ import { About } from "../../components/About/About";
 import { Products } from "../../components/Products/Products";
 import { ShoppingCart } from "../../components/ShoppingCart/ShoppingCart";
 import { Purchases } from "../../components/Purchases/Purchases";
+import { Sales } from "../../components/Sales/Sales";
 
 export function Main() {
   return (
@@ -27,6 +28,9 @@ export function Main() {
         </Route>
         <Route path="/usuarios">
           <Users />
+        </Route>
+        <Route path="/ventas">
+          <Sales />
         </Route>
         <Route path="/nosotros">
           <About />
