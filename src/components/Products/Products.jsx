@@ -6,7 +6,7 @@ import { UserContext } from "../../context/UserContext";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 import { MainTitle } from "../MainTitle/MainTitle";
-import { ProductCardContainer } from "./ProducCardsContainer/ProductCardContainer";
+import { ProductCardContainer } from "./ProductCardContainer/ProductCardContainer";
 import { ProductsTable } from "./ProductsTable/ProductsTable";
 import { CreateProduct } from "./CreateProduct/CreateProduct";
 import { EditProduct } from "./EditProduct/EditProduct";

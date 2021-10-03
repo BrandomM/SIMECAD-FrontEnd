@@ -12,16 +12,19 @@ import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { ToastProvider } from "./context/ToastContext";
 import { ToastContainer } from "./components/Toast/ToastContainer/ToastContainer";
 import { UserProvider } from "./context/UserContext";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
   return (
     <UserProvider>
-      <Router>
-        <ToastProvider>
-          <LandingPage />
-          <ToastContainer />
-        </ToastProvider>
-      </Router>
+      <ShoppingCartProvider>
+        <Router>
+          <ToastProvider>
+            <LandingPage />
+            <ToastContainer />
+          </ToastProvider>
+        </Router>
+      </ShoppingCartProvider>
     </UserProvider>
   );
 }

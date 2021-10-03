@@ -6,7 +6,6 @@ import { ProductoService } from "../../../services/ProductoService";
 
 export function ProductCardContainer() {
   const [productos, setProductos] = useState([]);
-  const [updateGrid, setUpdateGrid] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -14,12 +13,13 @@ export function ProductCardContainer() {
       setProductos(response);
     };
     fetchProducts();
-    setUpdateGrid(false);
-  }, [updateGrid]);
+  }, []);
 
   return (
     <ul className={styles.productCardContainer}>
-      {productos.map((producto) => <ProductCard image={producto.imagen} name={producto.nombre} price={producto.precio} />)}
+      {productos.map((producto) => (
+        <ProductCard key={producto.id} producto={producto} />
+      ))}
     </ul>
   );
 }

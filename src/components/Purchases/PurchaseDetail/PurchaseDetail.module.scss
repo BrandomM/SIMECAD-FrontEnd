@@ -1,0 +1,20 @@
+@import "../../../assets/scss/themeColors";
+
+.purchaseDetail {
+  .tablePicture {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    background-color: $gray-200;
+  }
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    .btnRegresar {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

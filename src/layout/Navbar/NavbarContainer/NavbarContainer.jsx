@@ -37,6 +37,20 @@ export function NavbarContainer() {
           />
         </>
       )}
+      {user?.rol === "Cliente" && (
+        <>
+          <NavbarItem
+            iconClassName="bi bi-cart"
+            to="/carrito"
+            description="Carrito"
+          />
+          <NavbarItem
+            iconClassName="bi bi-cash-coin"
+            to="/compras"
+            description="Compras"
+          />
+        </>
+      )}
       <NavbarItem
         iconClassName="bi bi-journal-text"
         to="/nosotros"
