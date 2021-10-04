@@ -35,6 +35,11 @@ export function NavbarContainer() {
             to="/ventas"
             description={t("navbar.sales")}
           />
+          <NavbarItem
+            iconClassName="bi bi-bar-chart-line"
+            to="/reportes"
+            description="Reportes"
+          />
         </>
       )}
       {user?.rol === "Cliente" && (

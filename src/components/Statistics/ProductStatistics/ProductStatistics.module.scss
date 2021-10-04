@@ -1,0 +1,14 @@
+@import "../../../assets/scss/themeColors";
+
+.productStatistics {
+  background-color: $gray-100;
+  padding: 40px;
+  border-radius: 0.25rem;
+  margin-bottom: 20px;
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 0;
+  }
+}

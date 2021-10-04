@@ -9,6 +9,7 @@ import { Products } from "../../components/Products/Products";
 import { ShoppingCart } from "../../components/ShoppingCart/ShoppingCart";
 import { Purchases } from "../../components/Purchases/Purchases";
 import { Sales } from "../../components/Sales/Sales";
+import { Statistics } from "../../components/Statistics/Statistics";
 
 export function Main() {
   return (
@@ -16,6 +17,9 @@ export function Main() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/reportes">
+          <Statistics />
         </Route>
         <Route path="/compras">
           <Purchases />
