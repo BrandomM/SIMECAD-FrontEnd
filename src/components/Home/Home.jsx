@@ -12,6 +12,7 @@ import { useState } from "react";
 
 import { Carousel } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export function Home() {
   const { t } = useTranslation();
@@ -58,19 +59,14 @@ export function Home() {
       <div className={`card ${styles.card}`}>
         <img src={home1} alt="..." className={styles.picture} />
         <div className={styles.information}>
-          <h3 className={styles.informationTitle}>
-            {T("cards.card1.title")}
-          </h3>
+          <h3 className={styles.informationTitle}>{T("cards.card1.title")}</h3>
           <p className={styles.informationText}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
-            saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
-            quisquam, natus asperiores dolores, nobis quas ab illo molestiae
-            sapiente laborum!
+            Ofrecemos toda clase de servicios para su vehículo. Reparaciones de bombas de inyección, inyectores, cajas de cambios, sincronización, entre otros. No dude en ponerse en contacto con nosotros para consolidar una fecha y lugar
           </p>
           <div className={styles.informationButton}>
-            <button className={`btn btn-azulClaro`}>
+            <Link to="/contacto" className={`btn btn-azulClaro`}>
               {T("cards.card1.button")}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -78,19 +74,17 @@ export function Home() {
       <div className={`card ${styles.card}`}>
         <img src={home2} alt="..." className={styles.picture} />
         <div className={styles.information}>
-          <h3 className={styles.informationTitle}>
-            {T("cards.card2.title")}
-          </h3>
+          <h3 className={styles.informationTitle}>{T("cards.card2.title")}</h3>
           <p className={styles.informationText}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
-            saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
-            quisquam, natus asperiores dolores, nobis quas ab illo molestiae
-            sapiente laborum!
+            Vendemos repuestos con precios que se ajustan a su presupuesto. Cada uno de ellos está ampliamente garantizado, tanto los nuevos como los de segunda mano. Nuestra especialidad son las bombas de inyección, sin embargo, tenemos disponibilidad de toda clase de partes para vehículos diesel
           </p>
           <div className={styles.informationButton}>
-            <button className={`btn btn-verde ${styles.textWhite}`}>
+            <Link
+              to="/productos"
+              className={`btn btn-verde ${styles.textWhite}`}
+            >
               {T("cards.card2.button")}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -98,19 +92,17 @@ export function Home() {
       <div className={`card ${styles.card}`}>
         <img src={home3} alt="..." className={styles.picture} />
         <div className={styles.information}>
-          <h3 className={styles.informationTitle}>
-            {T("cards.card3.title")}
-          </h3>
+          <h3 className={styles.informationTitle}>{T("cards.card3.title")}</h3>
           <p className={styles.informationText}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
-            saepe. Quibusdam rem provident esse eaque in maiores nemo laboriosam
-            quisquam, natus asperiores dolores, nobis quas ab illo molestiae
-            sapiente laborum!
+            Tenemos una amplia trayectoria en el mercado. Lo contamos sobre nuestra historia, nuestros valores y hacia a dónde apuntamos. Todo para brindarle la mejor atención
           </p>
           <div className={styles.informationButton}>
-            <button className={`btn btn-naranja ${styles.textWhite}`}>
+            <Link
+              to="/nosotros"
+              className={`btn btn-naranja ${styles.textWhite}`}
+            >
               {T("cards.card3.button")}
-            </button>
+            </Link>
           </div>
         </div>
       </div>

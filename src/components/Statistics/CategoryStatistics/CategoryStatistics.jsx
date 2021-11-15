@@ -32,7 +32,8 @@ export function CategoryStatistics() {
       {
         label: "Categorías más vendidos",
         backgroundColor: truncateData.map(
-          (record) => "#" + Math.floor(Math.random() * 16777215).toString(16)
+          (record) =>
+            "#e44d42" + Math.floor(Math.random() * (256 - 64) + 64).toString(16)
         ),
         data: truncateData.map((record) => record.cantidad),
       },
