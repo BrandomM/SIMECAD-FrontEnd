@@ -13,6 +13,7 @@ import { LoginService } from "../../services/LoginService";
 import { Link } from "react-router-dom";
 import { Login } from "./Login/Login";
 import { Register } from "./Register/Register";
+import { ConfirmDialog } from "../../components/ConfirmDialog/ConfirmDialog";
 
 export function Header() {
   const { user, setUser } = useContext(UserContext);
@@ -23,6 +24,8 @@ export function Header() {
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
+  const [showDialog, setShowDialog] = useState(false);
 
   const displayLogin = () => {
     setShowLogin(true);
@@ -40,10 +43,15 @@ export function Header() {
     setShowRegister(false);
   };
 
-  const logout = () => {
+  const confirm = async () => {
+    setShowDialog(false);
     LoginService.logout();
     setUser(null);
     history.push("/");
+  };
+
+  const cancel = () => {
+    setShowDialog(false);
   };
 
   return (
@@ -56,13 +64,20 @@ export function Header() {
         {user?.nombre && (
           <>
             <div className={styles.userInformation}>
-              <p className={styles.username}>{user.nombre}</p>
-              <img
-                className={styles.userPicture}
-                src={user.imagen !== "" ? user.imagen : defaultUserPicture}
-                alt={user.nombre}
-                onClick={() => logout()}
-              />
+              <Link className={styles.profileLink} to="/contacto">
+                <p className={styles.username}>{user.nombre}</p>
+                <img
+                  className={styles.userPicture}
+                  src={user.imagen !== "" ? user.imagen : defaultUserPicture}
+                  alt={user.nombre}
+                />
+              </Link>
+              <div className={styles.logout}>
+                <i
+                  className="bi bi-box-arrow-right"
+                  onClick={() => setShowDialog(true)}
+                />
+              </div>
             </div>
           </>
         )}
@@ -77,6 +92,16 @@ export function Header() {
           </button>
         )}
       </header>
+
+      {user?.nombre && (
+        <ConfirmDialog
+          show={showDialog}
+          confirm={() => confirm()}
+          cancel={() => cancel()}
+          type="confirm"
+          message="¿Desea cerrar sesión?"
+        />
+      )}
 
       {!user?.nombre && (
         <>

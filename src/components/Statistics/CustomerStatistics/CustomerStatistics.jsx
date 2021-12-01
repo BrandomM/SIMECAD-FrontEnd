@@ -32,7 +32,7 @@ export function CustomerStatistics() {
       {
         label: "Clientes que generan más ganancias",
         backgroundColor: truncateData.map(
-          (record) => "#bcd040" + Math.floor(Math.random() * (256 - 64) + 64).toString(16)  // + Math.floor(Math.random() * 16777215).toString(16)
+          (record, index) => "#bcd040" + Math.floor(255 * (20-index)/24).toString(16)
         ),
         data: truncateData.map((record) => record.total),
       },

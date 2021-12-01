@@ -19,8 +19,8 @@ export function Products() {
     <div className={styles.products}>
       <MainTitle label="Productos" />
 
-      {user?.rol !== "Administrador" && <ProductCardContainer />}
-      {user?.rol === "Administrador" && (
+      {(user?.rol !== "Administrador" && user?.rol !== "Empleado") && <ProductCardContainer />}
+      {(user?.rol === "Administrador" || user?.rol === "Empleado") && (
         <Switch>
           <Route path={`${match.path}/registrar`}>
             <CreateProduct />

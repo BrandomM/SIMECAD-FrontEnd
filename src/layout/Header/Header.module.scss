@@ -38,11 +38,18 @@
     align-items: center;
     cursor: pointer;
 
+    .profileLink {
+      color: inherit;
+      text-decoration: inherit;
+      display: flex;
+      align-items: center;
+    }
+
     .username {
       margin-bottom: 0;
 
       @media (max-width: 768px) {
-          display: none;
+        display: none;
       }
     }
 
@@ -54,24 +61,34 @@
       border-radius: 0.25rem;
       background-color: white;
     }
+
+    .logout {
+      font-size: 1.5rem;
+      margin-left: 20px;
+    }
   }
 
-  .popover{
-      display: grid;
-      grid-gap: 10px;
-      padding: 10px 10px;
-      text-align: center;
+  .popover {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px 10px;
+    text-align: center;
 
-      .pButton {
-          cursor: pointer;
-          margin-bottom: 0;
-          background-color: $gray-400;
-          padding: 10px 0;
-          border-radius: 0.25rem;
+    .pButton {
+      cursor: pointer;
+      margin-bottom: 0;
+      background-color: $gray-400;
+      padding: 10px 0;
+      border-radius: 0.25rem;
 
-          &:hover {
-              background-color: $gray-500;
-          }
+      &:hover {
+        background-color: $gray-500;
       }
+    }
+  }
+
+  .logout {
+    font-size: 1.5rem;
+    margin-left: 20px;
   }
 }
