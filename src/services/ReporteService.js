@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "http://localhost:8080/api/reporte";
+const {REACT_APP_API_ENDPOINT} = process.env;
+const API = REACT_APP_API_ENDPOINT + "/api/reporte";
 
 export const ReporteService = {
   reporteProductos: async () => {

@@ -19,6 +19,12 @@ export function ShoppingCart() {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const buy = async () => {
+    if (shoppingCart.length < 1) {
+      toast("warning", "No hay productos seleccionados");
+      setShowConfirmDialog(false);
+      return;
+    }
+
     const venta = {
       usuario: user,
       productosVenta: shoppingCart,
@@ -40,15 +46,19 @@ export function ShoppingCart() {
   return (
     <div className={styles.cart}>
       <MainTitle label="Carrito de compra" />
-      <ul className={styles.cartList}>
-        {shoppingCart.map((shoppingItem) => (
-          <CartItem
-            key={shoppingItem.producto.id}
-            producto={shoppingItem.producto}
-            cantidad={shoppingItem.cantidad}
-          />
-        ))}
-      </ul>
+      {shoppingCart.length < 1 ? (
+        <li className={styles.cartItem}>No hay productos seleccionados</li>
+      ) : (
+        <ul className={styles.cartList}>
+          {shoppingCart.map((shoppingItem) => (
+            <CartItem
+              key={shoppingItem.producto.id}
+              producto={shoppingItem.producto}
+              cantidad={shoppingItem.cantidad}
+            />
+          ))}
+        </ul>
+      )}
       <div className={styles.buttonContainer}>
         <button
           className={`btn btn-azulClaro ${styles.buyButton}`}

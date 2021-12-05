@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "http://localhost:8080/api/usuario";
+const {REACT_APP_API_ENDPOINT} = process.env;
+const API = REACT_APP_API_ENDPOINT + "/api/usuario";
 
 export const UsuarioService = {
   listarUsuarios: async () => {
