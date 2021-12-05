@@ -14,6 +14,7 @@ import { Purchases } from "../../components/Purchases/Purchases";
 import { Sales } from "../../components/Sales/Sales";
 import { Statistics } from "../../components/Statistics/Statistics";
 import { NotFound } from "../../components/NotFound/NotFound";
+import { Profile } from "../../components/Profile/Profile";
 
 export function Main() {
   const { user } = useContext(UserContext);
@@ -24,6 +25,12 @@ export function Main() {
         <Route exact path="/">
           <Home />
         </Route>
+        {/* Usuarios */}
+        {user !== null && (
+          <Route path="/perfil">
+            <Profile />
+          </Route>
+        )}
         {/* Administrador */}
         {user?.rol === "Administrador" && (
           <Route path="/reportes">

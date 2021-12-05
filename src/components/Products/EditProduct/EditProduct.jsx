@@ -34,6 +34,15 @@ export function EditProduct() {
     fetchProduct();
   }, [productoId]);
 
+  useEffect(() => {
+    const setCurrentImage = () => {
+      if (productoEdit?.imagen) {
+        setPreviewPicture(productoEdit.imagen);
+      }
+    };
+    setCurrentImage();
+  }, [productoEdit]);
+
   const onSubmit = (data) => {
     setFormData(data);
     setShowDialog(true);
@@ -163,7 +172,7 @@ export function EditProduct() {
         </FormProvider>
         <div className={`card ${styles.picture}`}>
           <img
-            src={productoEdit?.imagen ? productoEdit?.imagen : previewPicture}
+            src={previewPicture}
             className={`card-img-top ${styles.productPicture}`}
             alt="..."
           />

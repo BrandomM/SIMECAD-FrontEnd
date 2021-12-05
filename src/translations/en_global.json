@@ -9,7 +9,9 @@
 		"about us": "About us",
 		"contact": "Contact",
 		"users": "Users",
-		"sales": "Sells"
+		"sales": "Sells",
+		"profile": "Profile",
+		"reports": "Reports"
 	},
 	"form": {
 		"errors": {

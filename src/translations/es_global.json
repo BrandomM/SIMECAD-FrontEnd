@@ -9,7 +9,9 @@
 		"about us": "Sobre nosotros",
 		"contact": "Contacto",
 		"users": "Usuarios",
-		"sales": "Ventas"
+		"sales": "Ventas",
+		"profile": "Perfil",
+		"reports": "Reportes"
 	},
 	"form": {
 		"errors": {

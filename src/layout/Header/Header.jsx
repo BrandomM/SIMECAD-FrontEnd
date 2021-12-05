@@ -64,7 +64,7 @@ export function Header() {
         {user?.nombre && (
           <>
             <div className={styles.userInformation}>
-              <Link className={styles.profileLink} to="/contacto">
+              <Link className={styles.profileLink} to="/perfil">
                 <p className={styles.username}>{user.nombre}</p>
                 <img
                   className={styles.userPicture}

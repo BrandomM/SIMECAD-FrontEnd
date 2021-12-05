@@ -18,6 +18,13 @@ export function NavbarContainer() {
         exact
         description={t("navbar.home")}
       />
+      {user !== null && (
+        <NavbarItem
+          iconClassName="bi bi-person"
+          to="/perfil"
+          description={t("navbar.profile")}
+        />
+      )}
       <NavbarItem
         iconClassName="bi bi-box-seam"
         to="/productos"
@@ -38,7 +45,7 @@ export function NavbarContainer() {
           <NavbarItem
             iconClassName="bi bi-bar-chart-line"
             to="/reportes"
-            description="Reportes"
+            description={t("navbar.reports")}
           />
         </>
       )}

@@ -124,4 +124,50 @@ export const UsuarioService = {
         });
     }
   },
+  actualizarPerfil: async (usuario) => {
+    if (usuario.foto) {
+      const formData = new FormData();
+
+      formData.append("foto", usuario.foto);
+
+      formData.append("nombre", usuario.nombre);
+      formData.append("celular", usuario.celular);
+      formData.append("id", usuario.id);
+
+      return await axios
+        .put(API + "/actualizarPerfilConFoto", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          return response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+          return false;
+        });
+    } else {
+      return await axios
+        .put(API + "/actualizarPerfil", usuario)
+        .then((response) => {
+          return response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+          return false;
+        });
+    }
+  },
+  actualizarContrasena: async (usuario) => {
+    return await axios
+      .put(API + "/actualizarContrasena", usuario)
+      .then((response) => {
+        return true;
+      })
+      .catch((error) => {
+        console.log(error);
+        return false;
+      });
+  },
 };

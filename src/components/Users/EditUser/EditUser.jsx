@@ -20,6 +20,14 @@ export function EditUser() {
   const { usuarioId } = useParams();
   const [usuarioEdit, setUsuarioEdit] = useState({});
 
+  const [formData, setFormData] = useState({});
+  const [showDialog, setShowDialog] = useState(false);
+  const [previewPicture, setPreviewPicture] = useState(defaulUserPicture);
+
+  const toast = useToast();
+
+  const methods = useForm();
+
   useEffect(() => {
     const fetchUser = async () => {
       const usuario = await UsuarioService.buscarUsuarioPorId(usuarioId);
@@ -28,13 +36,14 @@ export function EditUser() {
     fetchUser();
   }, [usuarioId]);
 
-  const [formData, setFormData] = useState({});
-  const [showDialog, setShowDialog] = useState(false);
-  const [previewPicture, setPreviewPicture] = useState(defaulUserPicture);
-
-  const toast = useToast();
-
-  const methods = useForm();
+  useEffect(() => {
+    const setCurrentImage = () => {
+      if (usuarioEdit?.imagen) {
+        setPreviewPicture(usuarioEdit.imagen);
+      }
+    };
+    setCurrentImage();
+  }, [usuarioEdit]);
 
   const onSubmit = (data) => {
     setFormData(data);
@@ -144,7 +153,7 @@ export function EditUser() {
         </FormProvider>
         <div className={`card ${styles.picture}`}>
           <img
-            src={usuarioEdit?.imagen ? usuarioEdit?.imagen : previewPicture}
+            src={previewPicture}
             className={`card-img-top ${styles.profilePicture}`}
             alt="..."
           />
