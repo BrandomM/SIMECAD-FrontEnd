@@ -19,7 +19,9 @@ export function CategoryStatistics() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await ReporteService.reporteCategorias();
-      setData(response);
+      if (response) {
+        setData(response);
+      }
     };
     fetchData();
   }, []);
@@ -33,7 +35,7 @@ export function CategoryStatistics() {
         label: "Categorías más vendidos",
         backgroundColor: truncateData.map(
           (record, index) =>
-            "#e44d42" + Math.floor(255 * (20-index)/24).toString(16)
+            "#e44d42" + Math.floor((255 * (20 - index)) / 24).toString(16)
         ),
         data: truncateData.map((record) => record.cantidad),
       },

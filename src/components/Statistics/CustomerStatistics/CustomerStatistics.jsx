@@ -19,7 +19,9 @@ export function CustomerStatistics() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await ReporteService.reporteClientes();
-      setData(response);
+      if (response) {
+        setData(response);
+      }
     };
     fetchData();
   }, []);
@@ -32,7 +34,8 @@ export function CustomerStatistics() {
       {
         label: "Clientes que generan más ganancias",
         backgroundColor: truncateData.map(
-          (record, index) => "#bcd040" + Math.floor(255 * (20-index)/24).toString(16)
+          (record, index) =>
+            "#bcd040" + Math.floor((255 * (20 - index)) / 24).toString(16)
         ),
         data: truncateData.map((record) => record.total),
       },

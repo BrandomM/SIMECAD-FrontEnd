@@ -26,16 +26,18 @@ export function SaleDetail() {
   useEffect(() => {
     const fetchSaleProducts = async () => {
       const response = await VentaService.buscarVentaPorId(ventaId);
-      const productosVenta = response.productosVenta.map((productoVenta) => {
-        return {
-          producto: productoVenta.producto.nombre,
-          imagen: productoVenta.producto.imagen,
-          cantidad: productoVenta.cantidad,
-          precioUnitario: productoVenta.precioUnitario,
-          subtotal: productoVenta.precioUnitario * productoVenta.cantidad,
-        };
-      });
-      setProductosVenta(productosVenta);
+      if (response) {
+        const productosVenta = response.productosVenta.map((productoVenta) => {
+          return {
+            producto: productoVenta.producto.nombre,
+            imagen: productoVenta.producto.imagen,
+            cantidad: productoVenta.cantidad,
+            precioUnitario: productoVenta.precioUnitario,
+            subtotal: productoVenta.precioUnitario * productoVenta.cantidad,
+          };
+        });
+        setProductosVenta(productosVenta);
+      }
     };
     fetchSaleProducts();
   }, [ventaId]);

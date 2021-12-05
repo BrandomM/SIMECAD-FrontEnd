@@ -23,27 +23,29 @@ export function SalesTable() {
   useEffect(() => {
     const fetchSales = async () => {
       const response = await VentaService.listarVentas();
-      const ventas = response.map((venta) => {
-        return {
-          id: venta.id,
-          fecha: venta.fecha,
-          cliente: venta.usuario.nombre,
-          productos: venta.productosVenta.length,
-          unidades: venta.productosVenta
-            .map((productoVenta) => productoVenta.cantidad)
-            .reduce((previousValue, currentValue) => {
-              return previousValue + currentValue;
-            }, 0),
-          total: venta.productosVenta
-            .map((productoVenta) => {
-              return productoVenta.cantidad * productoVenta.precioUnitario;
-            })
-            .reduce((previousValue, currentValue) => {
-              return previousValue + currentValue;
-            }, 0),
-        };
-      });
-      setVentas(ventas);
+      if (response) {
+        const ventas = response.map((venta) => {
+          return {
+            id: venta.id,
+            fecha: venta.fecha,
+            cliente: venta.usuario.nombre,
+            productos: venta.productosVenta.length,
+            unidades: venta.productosVenta
+              .map((productoVenta) => productoVenta.cantidad)
+              .reduce((previousValue, currentValue) => {
+                return previousValue + currentValue;
+              }, 0),
+            total: venta.productosVenta
+              .map((productoVenta) => {
+                return productoVenta.cantidad * productoVenta.precioUnitario;
+              })
+              .reduce((previousValue, currentValue) => {
+                return previousValue + currentValue;
+              }, 0),
+          };
+        });
+        setVentas(ventas);
+      }
     };
     fetchSales();
   }, []);

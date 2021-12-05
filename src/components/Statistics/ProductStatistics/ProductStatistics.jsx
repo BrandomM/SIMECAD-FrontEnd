@@ -19,7 +19,9 @@ export function ProductStatistics() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await ReporteService.reporteProductos();
-      setData(response);
+      if (response) {
+        setData(response);
+      }
     };
     fetchData();
   }, []);
@@ -32,7 +34,8 @@ export function ProductStatistics() {
       {
         label: "Productos más vendidos",
         backgroundColor: truncateData.map(
-          (record, index) => "#006bb1" + Math.floor(255 * (20-index)/30).toString(16)
+          (record, index) =>
+            "#006bb1" + Math.floor((255 * (20 - index)) / 30).toString(16)
         ),
         data: truncateData.map((record) => record.cantidad),
       },

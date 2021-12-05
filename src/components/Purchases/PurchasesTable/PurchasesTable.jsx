@@ -24,26 +24,28 @@ export function PurchasesTable() {
   useEffect(() => {
     const fetchPurchases = async () => {
       const response = await VentaService.ventasPorIdUsurio(user.id);
-      const compras = response.map((compra) => {
-        return {
-          id: compra.id,
-          fecha: compra.fecha,
-          productos: compra.productosVenta.length,
-          unidades: compra.productosVenta
-            .map((productoVenta) => productoVenta.cantidad)
-            .reduce((previousValue, currentValue) => {
-              return previousValue + currentValue;
-            }, 0),
-          total: compra.productosVenta
-            .map((productoVenta) => {
-              return productoVenta.cantidad * productoVenta.precioUnitario;
-            })
-            .reduce((previousValue, currentValue) => {
-              return previousValue + currentValue;
-            }, 0),
-        };
-      });
-      setCompras(compras);
+      if (response) {
+        const compras = response.map((compra) => {
+          return {
+            id: compra.id,
+            fecha: compra.fecha,
+            productos: compra.productosVenta.length,
+            unidades: compra.productosVenta
+              .map((productoVenta) => productoVenta.cantidad)
+              .reduce((previousValue, currentValue) => {
+                return previousValue + currentValue;
+              }, 0),
+            total: compra.productosVenta
+              .map((productoVenta) => {
+                return productoVenta.cantidad * productoVenta.precioUnitario;
+              })
+              .reduce((previousValue, currentValue) => {
+                return previousValue + currentValue;
+              }, 0),
+          };
+        });
+        setCompras(compras);
+      }
     };
     fetchPurchases();
   }, [user.id]);

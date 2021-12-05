@@ -27,7 +27,9 @@ export function UsersTable() {
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await UsuarioService.listarUsuarios();
-      setUsuarios(response);
+      if (response) {
+        setUsuarios(response);
+      }
     };
     fetchUsers();
     setUpdateTable(false);
